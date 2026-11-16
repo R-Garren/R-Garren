@@ -1,6 +1,6 @@
 # Hi, I'm River Garren 👋
 
-<a href="https://www.linkedin.com/in/river-garren-1aa985409/"><img src="https://img.shields.io/badge/-LinkedIn-0072b1?&style=for-the-badge&logo=linkedin&logoColor=white" /></a>
+<a href="https://www.linkedin.com/in/river-garren/"><img src="https://img.shields.io/badge/-LinkedIn-0072b1?&style=for-the-badge&logo=linkedin&logoColor=white" /></a>
 
 I'm a Cyber Defense student at Roane State Community College (AAS in Computer Information Technology, May 2027) with **CompTIA Security+** and **Network+**. I learn by building. My home lab runs real network services that I deploy, secure, troubleshoot, and document. The whole lab is defined as code, so I can tear it down and rebuild it from scratch.
 
@@ -49,7 +49,7 @@ Coursework: Network Security, Principles of Information Assurance, Windows Serve
 
 ## 📫 Let's Connect
 
-I'm open to SOC/NOC analyst opportunities. The fastest way to reach me is on [LinkedIn](https://www.linkedin.com/in/river-garren-1aa985409/).
+I'm open to SOC/NOC analyst opportunities. The fastest way to reach me is on [LinkedIn](https://www.linkedin.com/in/river-garren/).
 
 ## 🗺️ Roadmap
 
