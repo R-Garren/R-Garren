@@ -2,11 +2,11 @@
 
 <a href="https://www.linkedin.com/in/river-garren-1aa985409/"><img src="https://img.shields.io/badge/-LinkedIn-0072b1?&style=for-the-badge&logo=linkedin&logoColor=white" /></a>
 
-Cyber Defense student at Roane State Community College (AAS, Computer Information Technology, expected May 2027) and holder of **CompTIA Security+** and **Network+**. I run a self-hosted home lab where I build, break, monitor, and document real services, and I treat it as infrastructure as code so I can rebuild it from scratch.
+I'm a Cyber Defense student at Roane State Community College (AAS in Computer Information Technology, May 2027) with **CompTIA Security+** and **Network+**. I learn by building. My home lab runs real network services that I deploy, secure, troubleshoot, and document. The whole lab is defined as code, so I can tear it down and rebuild it from scratch.
 
 ## 🎯 Objective
 
-My goal is to land an **entry-level SOC or NOC Analyst** role. I bring hands-on Linux and Windows Server administration, DNS/DHCP troubleshooting, and Ansible automation, plus a background in shift work where keeping a service running (and fixing it fast when it broke) was my job.
+I'm looking for an **entry-level SOC or NOC Analyst** role where I can help keep systems running and secure. From my lab I bring hands-on Linux and Windows Server administration, DNS/DHCP troubleshooting, and Ansible automation. Before IT, I ran shifts as a key holder. My job was keeping service running and getting it back up fast when something broke. A SOC or NOC needs that same mindset.
 
 ## 🛠️ Skills
 
