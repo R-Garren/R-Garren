@@ -1,13 +1,12 @@
 # Hi, I'm River Garren 👋
 
 <a href="https://www.linkedin.com/in/river-garren-1aa985409/"><img src="https://img.shields.io/badge/-LinkedIn-0072b1?&style=for-the-badge&logo=linkedin&logoColor=white" /></a>
-<a href="https://github.com/R-Garren/homelab-iac"><img src="https://img.shields.io/badge/-Homelab_Repo-181717?&style=for-the-badge&logo=github&logoColor=white" /></a>
 
 Cyber Defense student at Roane State Community College (AAS, Computer Information Technology, expected May 2027) and holder of **CompTIA Security+** and **Network+**. I run a self-hosted home lab where I build, break, monitor, and document real services, and I treat it as infrastructure as code so I can rebuild it from scratch.
 
 ## 🎯 Objective
 
-I'm looking for an **entry-level SOC or NOC Analyst** role. I bring hands-on Linux and Windows Server administration, DNS/DHCP troubleshooting, and Ansible automation, plus a background in shift work where keeping a service running (and fixing it fast when it broke) was my job. I'm comfortable with onsite and rotating-shift schedules.
+My goal is to land an **entry-level SOC or NOC Analyst** role. I bring hands-on Linux and Windows Server administration, DNS/DHCP troubleshooting, and Ansible automation, plus a background in shift work where keeping a service running (and fixing it fast when it broke) was my job.
 
 ## 🛠️ Skills
 
@@ -23,37 +22,6 @@ I'm looking for an **entry-level SOC or NOC Analyst** role. I bring hands-on Lin
 | SIEM log monitoring & alert review (Wazuh) | <a href="https://github.com/R-Garren/homelab-iac/tree/main/siem">homelab-iac / siem</a> *(in progress)* |
 | Windows Server administration | Coursework: Windows Server Administration |
 | Incident response fundamentals & NIST CSF | Coursework: Network Security, Principles of Information Assurance |
-
-## 🧰 Tools
-
-### Security Operations
-<div>
-    <img src="https://img.shields.io/badge/-Wazuh-3595F9?&style=for-the-badge&logo=wazuh&logoColor=white" />
-    <img src="https://img.shields.io/badge/-WireGuard-88171A?&style=for-the-badge&logo=wireguard&logoColor=white" />
-    <img src="https://img.shields.io/badge/-DVWA-4D4D4D?&style=for-the-badge&logoColor=white" />
-</div>
-
-### Networking
-<div>
-    <img src="https://img.shields.io/badge/-Pi--hole-96060C?&style=for-the-badge&logo=pihole&logoColor=white" />
-    <img src="https://img.shields.io/badge/-Unbound-2A5B8C?&style=for-the-badge&logoColor=white" />
-    <img src="https://img.shields.io/badge/-Nginx_Proxy_Manager-F15833?&style=for-the-badge&logo=nginxproxymanager&logoColor=white" />
-</div>
-
-### Systems & Automation
-<div>
-    <img src="https://img.shields.io/badge/-Linux-FCC624?&style=for-the-badge&logo=linux&logoColor=black" />
-    <img src="https://img.shields.io/badge/-Ubuntu_Server-E95420?&style=for-the-badge&logo=ubuntu&logoColor=white" />
-    <img src="https://img.shields.io/badge/-Windows_Server-0078D4?&style=for-the-badge&logo=windows&logoColor=white" />
-    <img src="https://img.shields.io/badge/-Ansible-EE0000?&style=for-the-badge&logo=ansible&logoColor=white" />
-    <img src="https://img.shields.io/badge/-Python-3776AB?&style=for-the-badge&logo=python&logoColor=white" />
-</div>
-
-### Containers
-<div>
-    <img src="https://img.shields.io/badge/-Docker-2496ED?&style=for-the-badge&logo=docker&logoColor=white" />
-    <img src="https://img.shields.io/badge/-Portainer-13BEF9?&style=for-the-badge&logo=portainer&logoColor=white" />
-</div>
 
 ## 📜 Certifications
 
@@ -73,12 +41,6 @@ A self-hosted lab on an always-on Ubuntu server, defined with Docker Compose and
 - **Practice range:** an isolated DVWA + MariaDB environment for safely testing attacks
 - **Documentation:** every config change and fix is written down so services can be recovered consistently
 
-**Roadmap**
-1. ✅ Infrastructure as code: Compose services, secrets out of version control
-2. 🔄 SIEM: Wazuh ingesting logs from the core services
-3. ⏳ AI-assisted alert triage: a local LLM (Ollama) that summarizes and prioritizes Wazuh alerts
-4. ⏳ VLAN segmentation for the lab network
-
 ## 🎓 Education
 
 **AAS, Computer Information Technology – Cyber Defense** · Roane State Community College · *Expected May 2027*
@@ -88,3 +50,27 @@ Coursework: Network Security, Principles of Information Assurance, Windows Serve
 ## 📫 Let's Connect
 
 I'm open to SOC/NOC analyst opportunities. The fastest way to reach me is on [LinkedIn](https://www.linkedin.com/in/river-garren-1aa985409/).
+
+## 🗺️ Roadmap
+
+Each step builds on my home lab and on the step before it: attack the lab, detect it, investigate it, and recover from it.
+
+🔄 In progress · ⏳ Up next · ✅ Done
+
+<!-- When you start a project, swap "Coming soon" for a link, e.g. <a href="https://github.com/R-Garren/REPO-NAME">REPO-NAME</a>, and update its status emoji. -->
+
+| Step | Project | Skills it builds | Repo |
+|:----:|---------|------------------|------|
+| 1 | 🔄 **Wazuh SIEM:** collect logs from all lab hosts | SIEM, log monitoring | <a href="https://github.com/R-Garren/homelab-iac/tree/main/siem">homelab-iac / siem</a> |
+| 2 | ⏳ **Attack & investigate:** run SSH brute force, Nmap scans, and file changes from Kali, then trace each alert in Wazuh | Alert triage, MITRE ATT&CK, incident write-ups | *Coming soon* |
+| 3 | ⏳ **Packet analysis:** capture step 2's traffic in Wireshark and pick out scan and brute-force patterns ⭐ | Wireshark, packet analysis | *Coming soon* |
+| 4 | ⏳ **Firewall + IDS:** OPNsense with Suricata in front of the lab, VLAN segmentation, alerts sent to Wazuh | Firewalls, IDS/IPS, segmentation | *Coming soon* |
+| 5 | ⏳ **Splunk alongside Wazuh:** same logs into both SIEMs, one dashboard and one alert | Splunk, SPL, detection rules | *Coming soon* |
+| 6 | ⏳ **Disaster recovery:** back up, break, restore, and time a service, then write the runbook | Backup & recovery, runbooks | *Coming soon* |
+| 7 | ⏳ **Blue-team labs:** 5–10 CyberDefenders / Blue Team Labs Online investigations with write-ups | DFIR, investigation | *Coming soon* |
+| 8 | ⏳ **Vulnerability triage:** case notes on CISA KEV entries, plus Wazuh vulnerability detection and CIS checks ⭐ | Vulnerability management, CVSS, CIS | *Coming soon* |
+| 9 | ⏳ **Scripting toolkit:** SSH brute-force detector, PowerShell account audit, Bash service-health check ⭐ | Bash, PowerShell, Python | *Coming soon* |
+| 10 | ⏳ **Microsoft Sentinel:** connect a VM, find sign-in events, write a detection rule (SC-200 path) | Cloud SIEM, KQL | *Coming soon* |
+| 11 | ⏳ **AI alert triage:** local LLM (Ollama) that summarizes and prioritizes Wazuh alerts | Automation, AI-assisted SOC | *Coming soon* |
+
+⭐ Builds on a project from [CarterPerez-dev/Cybersecurity-Projects](https://github.com/CarterPerez-dev/Cybersecurity-Projects).
