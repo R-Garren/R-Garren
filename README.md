@@ -2,28 +2,29 @@
 
 <a href="https://www.linkedin.com/in/river-garren/"><img src="https://img.shields.io/badge/-LinkedIn-0072b1?&style=for-the-badge&logo=linkedin&logoColor=white" /></a>
 
-I'm a Cyber Defense student at Roane State Community College (AAS in Computer Information Technology, May 2027) with **CompTIA Security+** and **Network+**. I learn by building. My home lab runs real network services that I deploy, secure, troubleshoot, and document. The whole lab is defined as code, so I can tear it down and rebuild it from scratch.
+I'm a Cyber Defense student at Roane State Community College (AAS in Computer Information Technology, May 2027) with **CompTIA Security+** and **Network+**. I learn by building. My home lab runs real network services that I deploy, secure, troubleshoot, and document. I'm now rebuilding the whole lab as code, in public, so it can be torn down and rebuilt from scratch with one command.
+
+🔨 **Currently building:** [homelab-ansible](https://github.com/R-Garren/homelab-ansible): Week 0 of 12, mapping and re-addressing my home network
 
 ## 🎯 Objective
 
-I'm looking for an **entry-level SOC or NOC Analyst** role where I can help keep systems running and secure. From my lab I bring hands-on Linux and Windows Server administration, DNS/DHCP troubleshooting, and Ansible automation. Before IT, I ran shifts as a key holder. My job was keeping service running and getting it back up fast when something broke. A SOC or NOC needs that same mindset.
+I'm looking for an **entry-level SOC, NOC, or IT role, or an internship**, where I can help keep systems running and secure. From my lab I bring hands-on Linux and Windows Server administration, DNS/DHCP troubleshooting, and Ansible automation. Before IT, I ran shifts as a key holder. My job was keeping service running and getting it back up fast when something broke. A SOC or NOC needs that same mindset.
 
 ## 🛠️ Skills
 
 | Skill | Where I've used it |
 |-------|--------------------|
-| DNS & DHCP administration (Pi-hole + Unbound recursive resolver) | Pi-hole handles DNS and DHCP for my whole home network and forwards to Unbound, so no third-party resolver sees my lookups |
+| DNS & DHCP administration (Pi-hole + Unbound recursive resolver) | Pi-hole handles DNS and DHCP for my home network and forwards to Unbound, so no third-party resolver sees my lookups |
 | Reverse proxy & TLS/HTTPS (Nginx Proxy Manager) | Nginx Proxy Manager handles HTTPS for internal services like Portainer, with admin UIs reachable from the LAN only |
-| Secure remote access (WireGuard VPN) | Containerized WireGuard server for remote access to the lab, with keys kept out of version control |
 | Configuration management & hardening with Ansible | Base-host playbook that installs packages, turns on automatic security updates, and sets up IP forwarding, tested on a VM before running on the production server |
-| Multi-container Docker environments (Compose, Portainer) | Four Compose stacks (core services, VPN, practice lab, SIEM) on separate Docker networks, managed through Portainer |
-| Secrets management (`.env` files kept out of version control) | Service passwords load from gitignored `.env` files, with `.env.example` templates showing which values are needed |
-| Isolated vulnerable practice environment (DVWA + MariaDB) | DVWA, MariaDB, and OWASP Juice Shop on an isolated Docker network with no route to my real services, started only when I'm practicing |
-| SIEM log monitoring & alert review (Wazuh) | Wazuh collecting Pi-hole DNS logs, with custom rules that flag DNS tunneling (MITRE T1071.004) and DGA-style bursts (T1568.002) *(in progress)* |
+| Multi-container Docker environments (Compose, Portainer) | Compose stacks for core services, VPN, and SIEM on separate Docker networks |
+| Secure remote access (WireGuard VPN) | Containerized WireGuard server for remote access to the lab, with keys kept out of version control *(rebuilding in v2, Week 12)* |
+| Secrets management | Service passwords kept out of version control in gitignored `.env` files *(moving to Ansible Vault in v2)* |
+| SIEM log monitoring (Wazuh) | Started a Wazuh deployment collecting Pi-hole DNS logs, with custom rules for DNS tunneling (MITRE T1071.004) and DGA-style bursts (T1568.002) *(paused during the v2 rebuild)* |
 | Windows Server administration | Coursework: Windows Server Administration |
 | Incident response fundamentals & NIST CSF | Coursework: Network Security, Principles of Information Assurance |
 
-Everything above except coursework comes from my homelab-iac project, which is temporarily private (see [Projects](#-projects)).
+Everything above except coursework comes from v1 of my home lab. I'm rebuilding it in public as [homelab-ansible](https://github.com/R-Garren/homelab-ansible), and each row will link to its proof as the matching week ships.
 
 ## 📜 Certifications
 
@@ -34,16 +35,27 @@ Everything above except coursework comes from my homelab-iac project, which is t
 
 ## 🚀 Projects
 
-### homelab-iac 🔒 — Reproducible Home Lab Infrastructure
-> **Temporarily private.** I'm doing a security review of this repo's configuration and commit history, and it will be public again once that's done.
+### [homelab-ansible](https://github.com/R-Garren/homelab-ansible) 🔄: Home Lab v2, Rebuilt as Code
 
-A self-hosted lab on an always-on Ubuntu server, defined with Docker Compose and Ansible so it can be rebuilt from scratch.
+My first lab (v1) worked, but too much of it was assembled by hand. v2 rebuilds it from scratch with Ansible, tested on a VirtualBox VM before it touches the production server, one milestone commit per week.
 
-- **Core network services:** network-wide DNS and DHCP through Pi-hole, with Unbound as a private recursive resolver
-- **Reduced attack surface:** self-hosted services sit behind Nginx Proxy Manager with HTTPS; remote access goes through WireGuard
-- **Automation:** Ansible playbooks for provisioning, updates, and hardening (in progress)
-- **Practice range:** an isolated DVWA + MariaDB environment for safely testing attacks
-- **Documentation:** every config change and fix is written down so services can be recovered consistently
+What's different in v2:
+
+- **One-command build:** Ansible takes a bare Ubuntu Server 26.04 LTS install to running DNS, proxy, and management services
+- **Ansible owns the host, Portainer owns the apps:** stacks deploy from Git, so Portainer has full control (fixing v1's "created outside of Portainer" limitation)
+- **Security first:** SSH hardening, a default-deny firewall, secrets in Ansible Vault, Unbound reachable only from the host, admin panels kept off the LAN
+- **Proof, not claims:** every week has a build log, decision records, and test results, including what broke and how I fixed it
+
+| Week | Milestone | Status |
+|:----:|-----------|:------:|
+| 0 | Map the home network, remove a double NAT, re-address to a planned subnet and DHCP scope | 🔄 |
+| 1–4 | Control node, Ansible fundamentals, hardened base role, Ansible Vault + Docker | ⏳ |
+| 5–8 | Portainer, Pi-hole + Unbound with DNSSEC, Nginx Proxy Manager with a private CA, one-command build via the Portainer API | ⏳ |
+| 9–10 | Backups, CI linting, a timed disaster-recovery drill, production cutover → **v2.0.0** | ⏳ |
+| 11 | VLAN segmentation and Suricata IDS in an OPNsense lab, with tested firewall rules → **v2.1.0** | ⏳ |
+| 12 | WireGuard remote access with Vault-managed keys → **v2.2.0** | ⏳ |
+
+v1 (`homelab-iac`) is archived. v2's README explains what I changed and why.
 
 ## 🎓 Education
 
@@ -53,24 +65,25 @@ Coursework: Network Security, Principles of Information Assurance, Windows Serve
 
 ## 📫 Let's Connect
 
-I'm open to work opportunities. The fastest way to reach me is on [LinkedIn](https://www.linkedin.com/in/river-garren/).
+I'm open to work and internship opportunities. The fastest way to reach me is on [LinkedIn](https://www.linkedin.com/in/river-garren/).
 
 ## 🗺️ Roadmap
 
 Each step builds on my home lab and on the step before it: attack the lab, detect it, investigate it, and recover from it.
 
-🔄 In progress · ⏳ Up next · ✅ Done
+🔄 In progress · ⏳ Up next · ⏸️ Paused · ✅ Done
 
 <!-- When you start a project, swap "Coming soon" for a link, e.g. <a href="https://github.com/R-Garren/REPO-NAME">REPO-NAME</a>, and update its status emoji. -->
 
 | Step | Project | Skills it builds | Repo |
 |:----:|---------|------------------|------|
-| 1 | 🔄 **Wazuh SIEM:** collect logs from all lab hosts | SIEM, log monitoring | *Private for now* |
+| 0 | 🔄 **Home lab v2 rebuild:** the whole lab as code, built and tested week by week | Ansible, Linux, Docker, networking | [homelab-ansible](https://github.com/R-Garren/homelab-ansible) |
+| 1 | ⏸️ **Wazuh SIEM:** collect logs from all lab hosts *(resumes after v2.0)* | SIEM, log monitoring | *Coming soon* |
 | 2 | ⏳ **Attack & investigate:** run SSH brute force, Nmap scans, and file changes from Kali, then trace each alert in Wazuh | Alert triage, MITRE ATT&CK, incident write-ups | *Coming soon* |
 | 3 | ⏳ **Packet analysis:** capture step 2's traffic in Wireshark and pick out scan and brute-force patterns ⭐ | Wireshark, packet analysis | *Coming soon* |
-| 4 | ⏳ **Firewall + IDS:** OPNsense with Suricata in front of the lab, VLAN segmentation, alerts sent to Wazuh | Firewalls, IDS/IPS, segmentation | *Coming soon* |
+| 4 | ⏳ **Firewall + IDS:** OPNsense with Suricata in front of the lab, VLAN segmentation, alerts sent to Wazuh | Firewalls, IDS/IPS, segmentation | Part of [homelab-ansible](https://github.com/R-Garren/homelab-ansible) (Week 11) |
 | 5 | ⏳ **Splunk alongside Wazuh:** same logs into both SIEMs, one dashboard and one alert | Splunk, SPL, detection rules | *Coming soon* |
-| 6 | ⏳ **Disaster recovery:** back up, break, restore, and time a service, then write the runbook | Backup & recovery, runbooks | *Coming soon* |
+| 6 | ⏳ **Disaster recovery:** back up, break, restore, and time a service, then write the runbook | Backup & recovery, runbooks | Part of [homelab-ansible](https://github.com/R-Garren/homelab-ansible) (Week 9) |
 | 7 | ⏳ **Blue-team labs:** 5–10 CyberDefenders / Blue Team Labs Online investigations with write-ups | DFIR, investigation | *Coming soon* |
 | 8 | ⏳ **Vulnerability triage:** case notes on CISA KEV entries, plus Wazuh vulnerability detection and CIS checks ⭐ | Vulnerability management, CVSS, CIS | *Coming soon* |
 | 9 | ⏳ **Scripting toolkit:** SSH brute-force detector, PowerShell account audit, Bash service-health check ⭐ | Bash, PowerShell, Python | *Coming soon* |
