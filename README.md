@@ -12,16 +12,18 @@ I'm looking for an **entry-level SOC or NOC Analyst** role where I can help keep
 
 | Skill | Where I've used it |
 |-------|--------------------|
-| DNS & DHCP administration (Pi-hole + Unbound recursive resolver) | <a href="https://github.com/R-Garren/homelab-iac/tree/main/core">homelab-iac / core</a> |
-| Reverse proxy & TLS/HTTPS (Nginx Proxy Manager) | <a href="https://github.com/R-Garren/homelab-iac/tree/main/core">homelab-iac / core</a> |
-| Secure remote access (WireGuard VPN) | <a href="https://github.com/R-Garren/homelab-iac/tree/main/security">homelab-iac / security</a> |
-| Configuration management & hardening with Ansible | <a href="https://github.com/R-Garren/homelab-iac/tree/main/ansible">homelab-iac / ansible</a> |
-| Multi-container Docker environments (Compose, Portainer) | <a href="https://github.com/R-Garren/homelab-iac">homelab-iac</a> |
-| Secrets management (`.env` files kept out of version control) | <a href="https://github.com/R-Garren/homelab-iac">homelab-iac</a> |
-| Isolated vulnerable practice environment (DVWA + MariaDB) | <a href="https://github.com/R-Garren/homelab-iac/tree/main/lab">homelab-iac / lab</a> |
-| SIEM log monitoring & alert review (Wazuh) | <a href="https://github.com/R-Garren/homelab-iac/tree/main/siem">homelab-iac / siem</a> *(in progress)* |
+| DNS & DHCP administration (Pi-hole + Unbound recursive resolver) | Pi-hole handles DNS and DHCP for my whole home network and forwards to Unbound, so no third-party resolver sees my lookups |
+| Reverse proxy & TLS/HTTPS (Nginx Proxy Manager) | Nginx Proxy Manager handles HTTPS for internal services like Portainer, with admin UIs reachable from the LAN only |
+| Secure remote access (WireGuard VPN) | Containerized WireGuard server for remote access to the lab, with keys kept out of version control |
+| Configuration management & hardening with Ansible | Base-host playbook that installs packages, turns on automatic security updates, and sets up IP forwarding, tested on a VM before running on the production server |
+| Multi-container Docker environments (Compose, Portainer) | Four Compose stacks (core services, VPN, practice lab, SIEM) on separate Docker networks, managed through Portainer |
+| Secrets management (`.env` files kept out of version control) | Service passwords load from gitignored `.env` files, with `.env.example` templates showing which values are needed |
+| Isolated vulnerable practice environment (DVWA + MariaDB) | DVWA, MariaDB, and OWASP Juice Shop on an isolated Docker network with no route to my real services, started only when I'm practicing |
+| SIEM log monitoring & alert review (Wazuh) | Wazuh collecting Pi-hole DNS logs, with custom rules that flag DNS tunneling (MITRE T1071.004) and DGA-style bursts (T1568.002) *(in progress)* |
 | Windows Server administration | Coursework: Windows Server Administration |
 | Incident response fundamentals & NIST CSF | Coursework: Network Security, Principles of Information Assurance |
+
+Everything above except coursework comes from my homelab-iac project, which is temporarily private (see [Projects](#-projects)).
 
 ## 📜 Certifications
 
@@ -32,7 +34,9 @@ I'm looking for an **entry-level SOC or NOC Analyst** role where I can help keep
 
 ## 🚀 Projects
 
-### [homelab-iac](https://github.com/R-Garren/homelab-iac) — Reproducible Home Lab Infrastructure
+### homelab-iac 🔒 — Reproducible Home Lab Infrastructure
+> **Temporarily private.** I'm doing a security review of this repo's configuration and commit history, and it will be public again once that's done.
+
 A self-hosted lab on an always-on Ubuntu server, defined with Docker Compose and Ansible so it can be rebuilt from scratch.
 
 - **Core network services:** network-wide DNS and DHCP through Pi-hole, with Unbound as a private recursive resolver
@@ -61,7 +65,7 @@ Each step builds on my home lab and on the step before it: attack the lab, detec
 
 | Step | Project | Skills it builds | Repo |
 |:----:|---------|------------------|------|
-| 1 | 🔄 **Wazuh SIEM:** collect logs from all lab hosts | SIEM, log monitoring | <a href="https://github.com/R-Garren/homelab-iac/tree/main/siem">homelab-iac / siem</a> |
+| 1 | 🔄 **Wazuh SIEM:** collect logs from all lab hosts | SIEM, log monitoring | *Private for now* |
 | 2 | ⏳ **Attack & investigate:** run SSH brute force, Nmap scans, and file changes from Kali, then trace each alert in Wazuh | Alert triage, MITRE ATT&CK, incident write-ups | *Coming soon* |
 | 3 | ⏳ **Packet analysis:** capture step 2's traffic in Wireshark and pick out scan and brute-force patterns ⭐ | Wireshark, packet analysis | *Coming soon* |
 | 4 | ⏳ **Firewall + IDS:** OPNsense with Suricata in front of the lab, VLAN segmentation, alerts sent to Wazuh | Firewalls, IDS/IPS, segmentation | *Coming soon* |
