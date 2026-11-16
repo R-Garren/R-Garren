@@ -26,8 +26,8 @@ I'm looking for an **entry-level SOC or NOC Analyst** role where I can help keep
 ## 📜 Certifications
 
 <div>
-    <img src="https://img.shields.io/badge/-CompTIA_Security%2B-C8202F?&style=for-the-badge&logoColor=white" />
-    <img src="https://img.shields.io/badge/-CompTIA_Network%2B-007ACC?&style=for-the-badge&logoColor=white" />
+    <a href="https://www.credly.com/badges/2d1d0517-d85b-459f-987d-8de3c5e85553/public_url"><img src="https://img.shields.io/badge/-CompTIA_Security%2B-C8202F?&style=for-the-badge&logoColor=white" /></a>
+    <a href="https://www.credly.com/badges/26264293-a4fa-48c6-8ae1-2e50ab663950/public_url"><img src="https://img.shields.io/badge/-CompTIA_Network%2B-007ACC?&style=for-the-badge&logoColor=white" /></a>
 </div>
 
 ## 🚀 Projects
