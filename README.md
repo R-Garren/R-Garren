@@ -4,7 +4,7 @@
 
 I'm a Cyber Defense student at Roane State Community College (AAS in Computer Information Technology, May 2027) with **CompTIA Security+** and **Network+**. I learn by building. My home lab runs real network services that I deploy, secure, troubleshoot, and document. I'm now rebuilding the whole lab as code, in public, so it can be torn down and rebuilt from scratch with one command.
 
-🔨 **Currently building:** [homelab-ansible](https://github.com/R-Garren/homelab-ansible): Week 0 of 12, mapping and re-addressing my home network
+🔨 **Currently building:** [homelab-as-code](https://github.com/R-Garren/homelab-as-code): Week 0 of 12, mapping and re-addressing my home network
 
 ## 🎯 Objective
 
@@ -24,7 +24,7 @@ I'm looking for an **entry-level SOC, NOC, or IT role, or an internship**, where
 | Windows Server administration | Coursework: Windows Server Administration |
 | Incident response fundamentals & NIST CSF | Coursework: Network Security, Principles of Information Assurance |
 
-Everything above except coursework comes from v1 of my home lab. I'm rebuilding it in public as [homelab-ansible](https://github.com/R-Garren/homelab-ansible), and each row will link to its proof as the matching week ships.
+Everything above except coursework comes from v1 of my home lab. I'm rebuilding it in public as [homelab-as-code](https://github.com/R-Garren/homelab-as-code), and each row will link to its proof as the matching week ships.
 
 ## 📜 Certifications
 
@@ -35,7 +35,7 @@ Everything above except coursework comes from v1 of my home lab. I'm rebuilding 
 
 ## 🚀 Projects
 
-### [homelab-ansible](https://github.com/R-Garren/homelab-ansible) 🔄: Home Lab v2, Rebuilt as Code
+### [homelab-as-code](https://github.com/R-Garren/homelab-as-code) 🔄: Home Lab v2, Rebuilt as Code
 
 My first lab (v1) worked, but too much of it was assembled by hand. v2 rebuilds it from scratch with Ansible, tested on a VirtualBox VM before it touches the production server, one milestone commit per week.
 
@@ -77,13 +77,13 @@ Each step builds on my home lab and on the step before it: attack the lab, detec
 
 | Step | Project | Skills it builds | Repo |
 |:----:|---------|------------------|------|
-| 0 | 🔄 **Home lab v2 rebuild:** the whole lab as code, built and tested week by week | Ansible, Linux, Docker, networking | [homelab-ansible](https://github.com/R-Garren/homelab-ansible) |
+| 0 | 🔄 **Home lab v2 rebuild:** the whole lab as code, built and tested week by week | Ansible, Linux, Docker, networking | [homelab-as-code](https://github.com/R-Garren/homelab-as-code) |
 | 1 | ⏸️ **Wazuh SIEM:** collect logs from all lab hosts *(resumes after v2.0)* | SIEM, log monitoring | *Coming soon* |
 | 2 | ⏳ **Attack & investigate:** run SSH brute force, Nmap scans, and file changes from Kali, then trace each alert in Wazuh | Alert triage, MITRE ATT&CK, incident write-ups | *Coming soon* |
 | 3 | ⏳ **Packet analysis:** capture step 2's traffic in Wireshark and pick out scan and brute-force patterns ⭐ | Wireshark, packet analysis | *Coming soon* |
-| 4 | ⏳ **Firewall + IDS:** OPNsense with Suricata in front of the lab, VLAN segmentation, alerts sent to Wazuh | Firewalls, IDS/IPS, segmentation | Part of [homelab-ansible](https://github.com/R-Garren/homelab-ansible) (Week 11) |
+| 4 | ⏳ **Firewall + IDS:** OPNsense with Suricata in front of the lab, VLAN segmentation, alerts sent to Wazuh | Firewalls, IDS/IPS, segmentation | Part of [homelab-as-code](https://github.com/R-Garren/homelab-as-code) (Week 11) |
 | 5 | ⏳ **Splunk alongside Wazuh:** same logs into both SIEMs, one dashboard and one alert | Splunk, SPL, detection rules | *Coming soon* |
-| 6 | ⏳ **Disaster recovery:** back up, break, restore, and time a service, then write the runbook | Backup & recovery, runbooks | Part of [homelab-ansible](https://github.com/R-Garren/homelab-ansible) (Week 9) |
+| 6 | ⏳ **Disaster recovery:** back up, break, restore, and time a service, then write the runbook | Backup & recovery, runbooks | Part of [homelab-as-code](https://github.com/R-Garren/homelab-as-code) (Week 9) |
 | 7 | ⏳ **Blue-team labs:** 5–10 CyberDefenders / Blue Team Labs Online investigations with write-ups | DFIR, investigation | *Coming soon* |
 | 8 | ⏳ **Vulnerability triage:** case notes on CISA KEV entries, plus Wazuh vulnerability detection and CIS checks ⭐ | Vulnerability management, CVSS, CIS | *Coming soon* |
 | 9 | ⏳ **Scripting toolkit:** SSH brute-force detector, PowerShell account audit, Bash service-health check ⭐ | Bash, PowerShell, Python | *Coming soon* |
