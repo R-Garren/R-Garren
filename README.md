@@ -53,7 +53,7 @@ Coursework: Network Security, Principles of Information Assurance, Windows Serve
 
 ## 📫 Let's Connect
 
-I'm open to SOC/NOC analyst opportunities. The fastest way to reach me is on [LinkedIn](https://www.linkedin.com/in/river-garren/).
+I'm open to work opportunities. The fastest way to reach me is on [LinkedIn](https://www.linkedin.com/in/river-garren/).
 
 ## 🗺️ Roadmap
 
