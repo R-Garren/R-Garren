@@ -4,7 +4,7 @@
 
 I'm a Cyber Defense student at Roane State Community College (AAS in Computer Information Technology, May 2027) with **CompTIA Security+** and **Network+**. I learn by building. My home lab runs real network services that I deploy, secure, troubleshoot, and document. I'm now rebuilding the whole lab as code, in public, so it can be torn down and rebuilt from scratch with one command.
 
-🔨 **Currently building:** [homelab-as-code](https://github.com/R-Garren/homelab-as-code): Week 0 of 12, mapping and re-addressing my home network
+🔨 **Currently building:** [homelab-as-code](https://github.com/R-Garren/homelab-as-code): Week 1 of 12, setting up the Ansible control node and a fresh test VM. Week 0 is done: [home network mapped, double NAT removed, LAN re-addressed](https://github.com/R-Garren/homelab-as-code/tree/main/docs/network)
 
 ## 🎯 Objective
 
@@ -14,6 +14,7 @@ I'm looking for an **entry-level SOC, NOC, or IT role, or an internship**, where
 
 | Skill | Where I've used it |
 |-------|--------------------|
+| Network troubleshooting & documentation (subnetting, NAT, DHCP, VLAN design) | Mapped my home network, found and removed a double NAT, and moved the LAN to a new subnet in one planned change with go/no-go gates and no rollbacks. [Topology](https://github.com/R-Garren/homelab-as-code/blob/main/docs/network/current-topology.md), [runbook](https://github.com/R-Garren/homelab-as-code/blob/main/docs/network/migration-runbook.md), [VLAN design](https://github.com/R-Garren/homelab-as-code/blob/main/docs/network/segmentation-plan.md) |
 | DNS & DHCP administration (Pi-hole + Unbound recursive resolver) | Pi-hole handles DNS and DHCP for my home network and forwards to Unbound, so no third-party resolver sees my lookups |
 | Reverse proxy & TLS/HTTPS (Nginx Proxy Manager) | Nginx Proxy Manager handles HTTPS for internal services like Portainer, with admin UIs reachable from the LAN only |
 | Configuration management & hardening with Ansible | Base-host playbook that installs packages, turns on automatic security updates, and sets up IP forwarding, tested on a VM before running on the production server |
@@ -24,7 +25,7 @@ I'm looking for an **entry-level SOC, NOC, or IT role, or an internship**, where
 | Windows Server administration | Coursework: Windows Server Administration |
 | Incident response fundamentals & NIST CSF | Coursework: Network Security, Principles of Information Assurance |
 
-Everything above except coursework comes from v1 of my home lab. I'm rebuilding it in public as [homelab-as-code](https://github.com/R-Garren/homelab-as-code), and each row will link to its proof as the matching week ships.
+The networking row comes from v2 and links to its proof. The rest, except coursework, comes from v1 of my home lab. I'm rebuilding it in public as [homelab-as-code](https://github.com/R-Garren/homelab-as-code), and each row will link to its proof as the matching week ships.
 
 ## 📜 Certifications
 
@@ -48,8 +49,8 @@ What's different in v2:
 
 | Week | Milestone | Status |
 |:----:|-----------|:------:|
-| 0 | Map the home network, remove a double NAT, re-address to a planned subnet and DHCP scope | 🔄 |
-| 1–4 | Control node, Ansible fundamentals, hardened base role, Ansible Vault + Docker | ⏳ |
+| 0 | [Map the home network, remove a double NAT, re-address to a planned subnet and DHCP scope](https://github.com/R-Garren/homelab-as-code/tree/main/docs/network) | ✅ |
+| 1–4 | Control node, Ansible fundamentals, hardened base role, Ansible Vault + Docker | 🔄 |
 | 5–8 | Portainer, Pi-hole + Unbound with DNSSEC, Nginx Proxy Manager with a private CA, one-command build via the Portainer API | ⏳ |
 | 9–10 | Backups, CI linting, a timed disaster-recovery drill, production cutover → **v2.0.0** | ⏳ |
 | 11 | VLAN segmentation and Suricata IDS in an OPNsense lab, with tested firewall rules → **v2.1.0** | ⏳ |
