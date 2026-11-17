@@ -4,7 +4,7 @@
 
 I'm a Cyber Defense student at Roane State Community College (AAS in Computer Information Technology, May 2027) with **CompTIA Security+** and **Network+**. I learn by building. My home lab runs real network services that I deploy, secure, troubleshoot, and document. I'm now rebuilding the whole lab as code, in public, so it can be torn down and rebuilt from scratch with one command.
 
-🔨 **Currently building:** [homelab-as-code](https://github.com/R-Garren/homelab-as-code): Week 1 of 12, setting up the Ansible control node and a fresh test VM. Week 0 is done: [home network mapped, double NAT removed, LAN re-addressed](https://github.com/R-Garren/homelab-as-code/tree/main/docs/network)
+🔨 **Currently building:** [homelab-as-code](https://github.com/R-Garren/homelab-as-code): Week 2 of 12, learning Ansible fundamentals against a test VM. Done so far: [home network mapped, double NAT removed, LAN re-addressed](https://github.com/R-Garren/homelab-as-code/tree/main/docs/network) (Week 0) and [Ansible control node plus a fresh Ubuntu Server 26.04 test VM](https://github.com/R-Garren/homelab-as-code/blob/main/docs/build-log/week-01.md) (Week 1)
 
 ## 🎯 Objective
 
@@ -50,13 +50,14 @@ What's different in v2:
 | Week | Milestone | Status |
 |:----:|-----------|:------:|
 | 0 | [Map the home network, remove a double NAT, re-address to a planned subnet and DHCP scope](https://github.com/R-Garren/homelab-as-code/tree/main/docs/network) | ✅ |
-| 1–4 | Control node, Ansible fundamentals, hardened base role, Ansible Vault + Docker | 🔄 |
+| 1 | [Ansible control node in WSL, one SSH key per purpose, fresh Ubuntu Server 26.04 test VM with key-only login](https://github.com/R-Garren/homelab-as-code/blob/main/docs/build-log/week-01.md) | ✅ |
+| 2–4 | Ansible fundamentals, hardened base role, Ansible Vault + Docker | 🔄 |
 | 5–8 | Portainer, Pi-hole + Unbound with DNSSEC, Nginx Proxy Manager with a private CA, one-command build via the Portainer API | ⏳ |
 | 9–10 | Backups, CI linting, a timed disaster-recovery drill, production cutover → **v2.0.0** | ⏳ |
 | 11 | VLAN segmentation and Suricata IDS in an OPNsense lab, with tested firewall rules → **v2.1.0** | ⏳ |
 | 12 | WireGuard remote access with Vault-managed keys → **v2.2.0** | ⏳ |
 
-v1 (`homelab-iac`) is archived. v2's README explains what I changed and why.
+v1 (`homelab-iac-v1`) is archived. v2's README explains what I changed and why.
 
 ## 🎓 Education
 
