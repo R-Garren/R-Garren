@@ -4,7 +4,7 @@
 
 I'm a Cyber Defense student at Roane State Community College (AAS in Computer Information Technology, May 2027) with **CompTIA Security+** and **Network+**. I learn by building. My home lab runs real network services that I deploy, secure, troubleshoot, and document. I'm now rebuilding the whole lab as code, in public, so it can be torn down and rebuilt from scratch with one command.
 
-🔨 **Currently building:** [homelab-as-code](https://github.com/R-Garren/homelab-as-code): Week 4 of 12, Ansible Vault and Docker Engine. Last finished: [a hardened base role](https://github.com/R-Garren/homelab-as-code/blob/main/docs/build-log/week-03.md) with key-only SSH, a default-deny firewall and automatic security updates, rebuilt from a blank VM in one command ([security baseline](https://github.com/R-Garren/homelab-as-code/blob/main/docs/security-baseline.md))
+🔨 **Currently building:** [homelab-as-code](https://github.com/R-Garren/homelab-as-code): Week 5 of 12, Portainer deployed by Ansible. Last finished: [secrets in Ansible Vault and a Docker Engine role](https://github.com/R-Garren/homelab-as-code/blob/main/docs/build-log/week-04.md), plus proof that Docker-published ports bypass the host firewall and a rule to close the gap ([finding](https://github.com/R-Garren/homelab-as-code/blob/main/docs/security-baseline.md#docker-bypasses-ufw))
 
 ## 🎯 Objective
 
@@ -18,14 +18,14 @@ I'm looking for an **entry-level SOC, NOC, or IT role, or an internship**, where
 | DNS & DHCP administration (Pi-hole + Unbound recursive resolver) | Pi-hole handles DNS and DHCP for my home network and forwards to Unbound, so no third-party resolver sees my lookups |
 | Reverse proxy & TLS/HTTPS (Nginx Proxy Manager) | Nginx Proxy Manager handles HTTPS for internal services like Portainer, with admin UIs reachable from the LAN only |
 | Configuration management & hardening with Ansible | An Ansible role that hardens SSH (keys only, no root login), turns on a default-deny firewall with rate-limited SSH, and installs security updates automatically. Tested on a VM and rebuilt from a blank install with one command. [Security baseline](https://github.com/R-Garren/homelab-as-code/blob/main/docs/security-baseline.md) mapping each control to Security+ concepts, [build log](https://github.com/R-Garren/homelab-as-code/blob/main/docs/build-log/week-03.md) |
-| Multi-container Docker environments (Compose, Portainer) | Compose stacks for core services, VPN, and SIEM on separate Docker networks |
+| Docker administration (Engine, Compose, Portainer) | An Ansible role installs Docker Engine from Docker's signed repository with container log rotation. I showed that ports Docker publishes skip the host firewall, traced why in iptables, and set a rule for every container port. [Finding](https://github.com/R-Garren/homelab-as-code/blob/main/docs/security-baseline.md#docker-bypasses-ufw), [build log](https://github.com/R-Garren/homelab-as-code/blob/main/docs/build-log/week-04.md). In v1: Compose stacks for core services, VPN, and SIEM on separate Docker networks |
 | Secure remote access (WireGuard VPN) | Containerized WireGuard server for remote access to the lab, with keys kept out of version control *(rebuilding in v2, Week 12)* |
-| Secrets management | Service passwords kept out of version control in gitignored `.env` files *(moving to Ansible Vault in v2)* |
+| Secrets management (Ansible Vault) | Secrets encrypted with Ansible Vault in a public repo, the key kept outside it and backed up in a password manager, and a Git pre-commit hook that refuses to commit an unencrypted vault file. [Decision record](https://github.com/R-Garren/homelab-as-code/blob/main/docs/adr/0002-secrets-with-ansible-vault.md) |
 | SIEM log monitoring (Wazuh) | Started a Wazuh deployment collecting Pi-hole DNS logs, with custom rules for DNS tunneling (MITRE T1071.004) and DGA-style bursts (T1568.002) *(paused during the v2 rebuild)* |
 | Windows Server administration | Coursework: Windows Server Administration |
 | Incident response fundamentals & NIST CSF | Coursework: Network Security, Principles of Information Assurance |
 
-The networking and Ansible rows come from v2 and link to their proof. The rest, except coursework, comes from v1 of my home lab. I'm rebuilding it in public as [homelab-as-code](https://github.com/R-Garren/homelab-as-code), and each row will link to its proof as the matching week ships.
+The networking, Ansible, Docker and secrets rows come from v2 and link to their proof. The rest, except coursework, comes from v1 of my home lab. I'm rebuilding it in public as [homelab-as-code](https://github.com/R-Garren/homelab-as-code), and each row will link to its proof as the matching week ships.
 
 ## 📜 Certifications
 
@@ -49,9 +49,9 @@ What's different in v2:
 
 | Week | Milestone | Status |
 |:----:|-----------|:------:|
-| 0–3 | Network mapped and re-addressed, Ansible control node and test VM, hardened base role. Latest: [Week 3 build log](https://github.com/R-Garren/homelab-as-code/blob/main/docs/build-log/week-03.md) · [security baseline](https://github.com/R-Garren/homelab-as-code/blob/main/docs/security-baseline.md) | ✅ |
-| 4 | Ansible Vault + Docker Engine | 🔄 |
-| 5–8 | Portainer, Pi-hole + Unbound with DNSSEC, Nginx Proxy Manager with a private CA, one-command build via the Portainer API | ⏳ |
+| 0–4 | Network mapped and re-addressed, Ansible control node and test VM, hardened base role, secrets in Ansible Vault, Docker Engine. Latest: [Week 4 build log](https://github.com/R-Garren/homelab-as-code/blob/main/docs/build-log/week-04.md) · [Docker bypasses the firewall](https://github.com/R-Garren/homelab-as-code/blob/main/docs/security-baseline.md#docker-bypasses-ufw) | ✅ |
+| 5 | Portainer, deployed by Ansible | 🔄 |
+| 6–8 | Pi-hole + Unbound with DNSSEC, Nginx Proxy Manager with a private CA, one-command build via the Portainer API | ⏳ |
 | 9–10 | Backups, CI linting, a timed disaster-recovery drill, production cutover → **v2.0.0** | ⏳ |
 | 11 | VLAN segmentation and Suricata IDS in an OPNsense lab, with tested firewall rules → **v2.1.0** | ⏳ |
 | 12 | WireGuard remote access with Vault-managed keys → **v2.2.0** | ⏳ |
