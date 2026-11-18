@@ -4,7 +4,7 @@
 
 I'm a Cyber Defense student at Roane State Community College (AAS in Computer Information Technology, May 2027) with **CompTIA Security+** and **Network+**. I learn by building. My home lab runs real network services that I deploy, secure, troubleshoot, and document. I'm now rebuilding the whole lab as code, in public, so it can be torn down and rebuilt from scratch with one command.
 
-🔨 **Currently building:** [homelab-as-code](https://github.com/R-Garren/homelab-as-code): Week 3 of 12, building a hardened base host role. Done so far: [home network mapped, double NAT removed, LAN re-addressed](https://github.com/R-Garren/homelab-as-code/tree/main/docs/network) (Week 0), [Ansible control node plus a fresh Ubuntu Server 26.04 test VM](https://github.com/R-Garren/homelab-as-code/blob/main/docs/build-log/week-01.md) (Week 1) and [an idempotent bootstrap playbook, proven from a fresh snapshot](https://github.com/R-Garren/homelab-as-code/blob/main/docs/build-log/week-02.md) (Week 2)
+🔨 **Currently building:** [homelab-as-code](https://github.com/R-Garren/homelab-as-code): Week 4 of 12, Ansible Vault and Docker Engine. Last finished: [a hardened base role](https://github.com/R-Garren/homelab-as-code/blob/main/docs/build-log/week-03.md) with key-only SSH, a default-deny firewall and automatic security updates, rebuilt from a blank VM in one command ([security baseline](https://github.com/R-Garren/homelab-as-code/blob/main/docs/security-baseline.md))
 
 ## 🎯 Objective
 
@@ -17,7 +17,7 @@ I'm looking for an **entry-level SOC, NOC, or IT role, or an internship**, where
 | Network troubleshooting & documentation (subnetting, NAT, DHCP, VLAN design) | Mapped my home network, found and removed a double NAT, and moved the LAN to a new subnet in one planned change with go/no-go gates and no rollbacks. [Topology](https://github.com/R-Garren/homelab-as-code/blob/main/docs/network/current-topology.md), [runbook](https://github.com/R-Garren/homelab-as-code/blob/main/docs/network/migration-runbook.md), [VLAN design](https://github.com/R-Garren/homelab-as-code/blob/main/docs/network/segmentation-plan.md) |
 | DNS & DHCP administration (Pi-hole + Unbound recursive resolver) | Pi-hole handles DNS and DHCP for my home network and forwards to Unbound, so no third-party resolver sees my lookups |
 | Reverse proxy & TLS/HTTPS (Nginx Proxy Manager) | Nginx Proxy Manager handles HTTPS for internal services like Portainer, with admin UIs reachable from the LAN only |
-| Configuration management & hardening with Ansible | Base-host playbook that installs packages, turns on automatic security updates, and sets up IP forwarding, tested on a VM before running on the production server |
+| Configuration management & hardening with Ansible | An Ansible role that hardens SSH (keys only, no root login), turns on a default-deny firewall with rate-limited SSH, and installs security updates automatically. Tested on a VM and rebuilt from a blank install with one command. [Security baseline](https://github.com/R-Garren/homelab-as-code/blob/main/docs/security-baseline.md) mapping each control to Security+ concepts, [build log](https://github.com/R-Garren/homelab-as-code/blob/main/docs/build-log/week-03.md) |
 | Multi-container Docker environments (Compose, Portainer) | Compose stacks for core services, VPN, and SIEM on separate Docker networks |
 | Secure remote access (WireGuard VPN) | Containerized WireGuard server for remote access to the lab, with keys kept out of version control *(rebuilding in v2, Week 12)* |
 | Secrets management | Service passwords kept out of version control in gitignored `.env` files *(moving to Ansible Vault in v2)* |
@@ -25,7 +25,7 @@ I'm looking for an **entry-level SOC, NOC, or IT role, or an internship**, where
 | Windows Server administration | Coursework: Windows Server Administration |
 | Incident response fundamentals & NIST CSF | Coursework: Network Security, Principles of Information Assurance |
 
-The networking row comes from v2 and links to its proof. The rest, except coursework, comes from v1 of my home lab. I'm rebuilding it in public as [homelab-as-code](https://github.com/R-Garren/homelab-as-code), and each row will link to its proof as the matching week ships.
+The networking and Ansible rows come from v2 and link to their proof. The rest, except coursework, comes from v1 of my home lab. I'm rebuilding it in public as [homelab-as-code](https://github.com/R-Garren/homelab-as-code), and each row will link to its proof as the matching week ships.
 
 ## 📜 Certifications
 
@@ -49,10 +49,8 @@ What's different in v2:
 
 | Week | Milestone | Status |
 |:----:|-----------|:------:|
-| 0 | [Map the home network, remove a double NAT, re-address to a planned subnet and DHCP scope](https://github.com/R-Garren/homelab-as-code/tree/main/docs/network) | ✅ |
-| 1 | [Ansible control node in WSL, one SSH key per purpose, fresh Ubuntu Server 26.04 test VM with key-only login](https://github.com/R-Garren/homelab-as-code/blob/main/docs/build-log/week-01.md) | ✅ |
-| 2 | [Ansible inventory and an idempotent bootstrap playbook (`changed=0` on rerun, tested from a fresh snapshot), plus a first decision record](https://github.com/R-Garren/homelab-as-code/blob/main/docs/build-log/week-02.md) | ✅ |
-| 3–4 | Hardened base role, Ansible Vault + Docker | 🔄 |
+| 0–3 | Network mapped and re-addressed, Ansible control node and test VM, hardened base role. Latest: [Week 3 build log](https://github.com/R-Garren/homelab-as-code/blob/main/docs/build-log/week-03.md) · [security baseline](https://github.com/R-Garren/homelab-as-code/blob/main/docs/security-baseline.md) | ✅ |
+| 4 | Ansible Vault + Docker Engine | 🔄 |
 | 5–8 | Portainer, Pi-hole + Unbound with DNSSEC, Nginx Proxy Manager with a private CA, one-command build via the Portainer API | ⏳ |
 | 9–10 | Backups, CI linting, a timed disaster-recovery drill, production cutover → **v2.0.0** | ⏳ |
 | 11 | VLAN segmentation and Suricata IDS in an OPNsense lab, with tested firewall rules → **v2.1.0** | ⏳ |
