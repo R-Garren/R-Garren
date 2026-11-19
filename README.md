@@ -5,6 +5,7 @@
 **Cyber Defense student · Home lab builder · Looking for IT roles and internships**
 
 <a href="https://www.linkedin.com/in/river-garren/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-0072b1?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
+
 <a href="https://www.credly.com/badges/2d1d0517-d85b-459f-987d-8de3c5e85553/public_url"><img alt="CompTIA Security+" src="https://img.shields.io/badge/CompTIA_Security%2B-C8202F?style=for-the-badge&logoColor=white" /></a>
 <a href="https://www.credly.com/badges/26264293-a4fa-48c6-8ae1-2e50ab663950/public_url"><img alt="CompTIA Network+" src="https://img.shields.io/badge/CompTIA_Network%2B-007ACC?style=for-the-badge&logoColor=white" /></a>
 
