@@ -4,7 +4,7 @@
 
 I'm a Cyber Defense student at Roane State Community College (AAS in Computer Information Technology, May 2027) with **CompTIA Security+** and **Network+**. I learn by building. My home lab runs real network services that I deploy, secure, troubleshoot, and document. I'm now rebuilding the whole lab as code, in public, so it can be torn down and rebuilt from scratch with one command.
 
-🔨 **Currently building:** [homelab-as-code](https://github.com/R-Garren/homelab-as-code): Week 5 of 12, Portainer deployed by Ansible. Last finished: [secrets in Ansible Vault and a Docker Engine role](https://github.com/R-Garren/homelab-as-code/blob/main/docs/build-log/week-04.md), plus proof that Docker-published ports bypass the host firewall and a rule to close the gap ([finding](https://github.com/R-Garren/homelab-as-code/blob/main/docs/security-baseline.md#docker-bypasses-ufw))
+🔨 **Currently building:** [homelab-as-code](https://github.com/R-Garren/homelab-as-code): Week 6 of 12, the DNS stack (Pi-hole + Unbound, deployed from Git). Last finished: [Portainer deployed by Ansible](https://github.com/R-Garren/homelab-as-code/blob/main/docs/build-log/week-05.md), plus v1's "limited control" stacks reproduced on purpose, traced to their root cause, and fixed by design ([decision record](https://github.com/R-Garren/homelab-as-code/blob/main/docs/adr/0003-ansible-owns-host-portainer-owns-apps.md))
 
 ## 🎯 Objective
 
@@ -18,7 +18,7 @@ I'm looking for an **entry-level SOC, NOC, or IT role, or an internship**, where
 | DNS & DHCP administration (Pi-hole + Unbound recursive resolver) | Pi-hole handles DNS and DHCP for my home network and forwards to Unbound, so no third-party resolver sees my lookups |
 | Reverse proxy & TLS/HTTPS (Nginx Proxy Manager) | Nginx Proxy Manager handles HTTPS for internal services like Portainer, with admin UIs reachable from the LAN only |
 | Configuration management & hardening with Ansible | An Ansible role that hardens SSH (keys only, no root login), turns on a default-deny firewall with rate-limited SSH, and installs security updates automatically. Tested on a VM and rebuilt from a blank install with one command. [Security baseline](https://github.com/R-Garren/homelab-as-code/blob/main/docs/security-baseline.md) mapping each control to Security+ concepts, [build log](https://github.com/R-Garren/homelab-as-code/blob/main/docs/build-log/week-03.md) |
-| Docker administration (Engine, Compose, Portainer) | An Ansible role installs Docker Engine from Docker's signed repository with container log rotation. I showed that ports Docker publishes skip the host firewall, traced why in iptables, and set a rule for every container port. [Finding](https://github.com/R-Garren/homelab-as-code/blob/main/docs/security-baseline.md#docker-bypasses-ufw), [build log](https://github.com/R-Garren/homelab-as-code/blob/main/docs/build-log/week-04.md). In v1: Compose stacks for core services, VPN, and SIEM on separate Docker networks |
+| Docker administration (Engine, Compose, Portainer) | An Ansible role installs Docker Engine from Docker's signed repository with container log rotation. I showed that ports Docker publishes skip the host firewall, traced why in iptables, and set a rule for every container port. [Finding](https://github.com/R-Garren/homelab-as-code/blob/main/docs/security-baseline.md#docker-bypasses-ufw), [build log](https://github.com/R-Garren/homelab-as-code/blob/main/docs/build-log/week-04.md). A second role runs Portainer from a pinned LTS image, with its Docker socket risk and LAN-facing port documented. I reproduced v1's "limited control" stacks on purpose and recorded the fix: [decision record](https://github.com/R-Garren/homelab-as-code/blob/main/docs/adr/0003-ansible-owns-host-portainer-owns-apps.md). In v1: Compose stacks for core services, VPN, and SIEM on separate Docker networks |
 | Secure remote access (WireGuard VPN) | Containerized WireGuard server for remote access to the lab, with keys kept out of version control *(rebuilding in v2, Week 12)* |
 | Secrets management (Ansible Vault) | Secrets encrypted with Ansible Vault in a public repo, the key kept outside it and backed up in a password manager, and a Git pre-commit hook that refuses to commit an unencrypted vault file. [Decision record](https://github.com/R-Garren/homelab-as-code/blob/main/docs/adr/0002-secrets-with-ansible-vault.md) |
 | SIEM log monitoring (Wazuh) | Started a Wazuh deployment collecting Pi-hole DNS logs, with custom rules for DNS tunneling (MITRE T1071.004) and DGA-style bursts (T1568.002) *(paused during the v2 rebuild)* |
@@ -49,9 +49,9 @@ What's different in v2:
 
 | Week | Milestone | Status |
 |:----:|-----------|:------:|
-| 0–4 | Network mapped and re-addressed, Ansible control node and test VM, hardened base role, secrets in Ansible Vault, Docker Engine. Latest: [Week 4 build log](https://github.com/R-Garren/homelab-as-code/blob/main/docs/build-log/week-04.md) · [Docker bypasses the firewall](https://github.com/R-Garren/homelab-as-code/blob/main/docs/security-baseline.md#docker-bypasses-ufw) | ✅ |
-| 5 | Portainer, deployed by Ansible | 🔄 |
-| 6–8 | Pi-hole + Unbound with DNSSEC, Nginx Proxy Manager with a private CA, one-command build via the Portainer API | ⏳ |
+| 0–5 | Network mapped and re-addressed, Ansible control node and test VM, hardened base role, secrets in Ansible Vault, Docker Engine, Portainer deployed by Ansible. Latest: [Week 5 build log](https://github.com/R-Garren/homelab-as-code/blob/main/docs/build-log/week-05.md) · [Ansible owns the host, Portainer owns the apps](https://github.com/R-Garren/homelab-as-code/blob/main/docs/adr/0003-ansible-owns-host-portainer-owns-apps.md) | ✅ |
+| 6 | Pi-hole + Unbound with DNSSEC, deployed from Git by Portainer | 🔄 |
+| 7–8 | Nginx Proxy Manager with a private CA, one-command build via the Portainer API | ⏳ |
 | 9–10 | Backups, CI linting, a timed disaster-recovery drill, production cutover → **v2.0.0** | ⏳ |
 | 11 | VLAN segmentation and Suricata IDS in an OPNsense lab, with tested firewall rules → **v2.1.0** | ⏳ |
 | 12 | WireGuard remote access with Vault-managed keys → **v2.2.0** | ⏳ |
