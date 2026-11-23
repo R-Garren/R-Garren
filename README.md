@@ -33,17 +33,16 @@ Coursework: Network Security, Principles of Information Assurance, Windows Serve
 
 v1 of my lab worked, but too much was built by hand. v2 rebuilds it from scratch with Ansible, tested on a VM before it touches the production server, one milestone per week.
 
-- **One-command build:** bare Ubuntu Server install → running DNS, proxy, and management services
+- **One-command build:** bare Ubuntu Server install → running DNS, proxy, and management services in about 5 minutes
 - **Security first:** hardened SSH, default-deny firewall, secrets in Ansible Vault, admin panels kept off the LAN
 - **Proof, not claims:** weekly [build logs](https://github.com/R-Garren/homelab-as-code/tree/main/docs/build-log) and [decision records](https://github.com/R-Garren/homelab-as-code/tree/main/docs/adr), including what broke and how I fixed it
 
 | Week | Milestone | Status |
 |:----:|-----------|:------:|
-| 0–7 | Network re-addressed, hardened base role, Ansible Vault, Docker, Portainer, Pi-hole + Unbound with DNSSEC deployed from Git, HTTPS through Nginx Proxy Manager with my own private CA ([latest log](https://github.com/R-Garren/homelab-as-code/blob/main/docs/build-log/week-07.md)) | ✅ |
-| 8 | Portainer automated through its API | 🔄 |
-| 9–10 | Backups, CI linting, disaster-recovery drill → **v2.0.0** | ⏳ |
-| 11 | VLANs + Suricata IDS in OPNsense → **v2.1.0** | ⏳ |
-| 12 | WireGuard remote access → **v2.2.0** | ⏳ |
+| 0–8 | Network re-addressed, hardened base role, Ansible Vault, Docker, Portainer, Pi-hole + Unbound with DNSSEC deployed from Git, HTTPS through Nginx Proxy Manager with my own private CA, Portainer set up through its REST API: bare Ubuntu to working DNS in about 5 minutes ([latest log](https://github.com/R-Garren/homelab-as-code/blob/main/docs/build-log/week-08.md)) | ✅ |
+| 9 | Backups, CI linting, disaster-recovery drill | 🔄 |
+| 10 | Production cutover → **v2.0.0** | ⏳ |
+| 11 | WireGuard remote access → **v2.1.0** | ⏳ |
 
 <sub>v1 ([homelab-iac-v1](https://github.com/R-Garren/homelab-iac-v1)) is archived.</sub>
 
@@ -59,7 +58,7 @@ Each step builds on the lab and the step before it: attack it, detect it, invest
 | 1 | **Wazuh SIEM:** logs from every lab host *(resumes after v2.0)* | ⏸️ | *Coming soon* |
 | 2 | **Attack & investigate:** Kali brute force and scans, traced in Wazuh with MITRE ATT&CK write-ups | ⏳ | *Coming soon* |
 | 3 | **Packet analysis:** spot scan and brute-force patterns in Wireshark ⭐ | ⏳ | *Coming soon* |
-| 4 | **Firewall + IDS:** OPNsense, Suricata, VLAN segmentation | ⏳ | [homelab-as-code](https://github.com/R-Garren/homelab-as-code) (Wk 11) |
+| 4 | **Firewall + IDS:** OPNsense, Suricata, VLAN segmentation *(standalone project after v2)* | ⏳ | *Coming soon* |
 | 5 | **Splunk alongside Wazuh:** same logs, one dashboard, one alert | ⏳ | *Coming soon* |
 | 6 | **Disaster recovery:** back up, break, restore, time it, write the runbook | ⏳ | [homelab-as-code](https://github.com/R-Garren/homelab-as-code) (Wk 9) |
 | 7 | **Blue-team labs:** 5–10 CyberDefenders / BTLO investigations | ⏳ | *Coming soon* |
@@ -76,7 +75,7 @@ Each step builds on the lab and the step before it: attack it, detect it, invest
 |------|--------|-------|
 | **Networking** | Subnetting, NAT, DHCP, VLAN design, troubleshooting | [Topology](https://github.com/R-Garren/homelab-as-code/blob/main/docs/network/current-topology.md) · [Runbook](https://github.com/R-Garren/homelab-as-code/blob/main/docs/network/migration-runbook.md) · [VLAN plan](https://github.com/R-Garren/homelab-as-code/blob/main/docs/network/segmentation-plan.md) |
 | **Services** | DNS (Pi-hole + Unbound, DNSSEC validation), reverse proxy & TLS (Nginx Proxy Manager), private CA / PKI, WireGuard VPN | [DNS build log](https://github.com/R-Garren/homelab-as-code/blob/main/docs/build-log/week-06.md) · [Unbound image ADR](https://github.com/R-Garren/homelab-as-code/blob/main/docs/adr/0004-unbound-image.md) · [HTTPS build log](https://github.com/R-Garren/homelab-as-code/blob/main/docs/build-log/week-07.md) · [Private CA ADR](https://github.com/R-Garren/homelab-as-code/blob/main/docs/adr/0005-private-ca.md) · VPN rebuilding in v2 |
-| **Automation** | Ansible roles, hardening, Ansible Vault secrets | [Security baseline](https://github.com/R-Garren/homelab-as-code/blob/main/docs/security-baseline.md) · [Vault ADR](https://github.com/R-Garren/homelab-as-code/blob/main/docs/adr/0002-secrets-with-ansible-vault.md) |
+| **Automation** | Ansible roles, hardening, Ansible Vault secrets, REST API automation | [Security baseline](https://github.com/R-Garren/homelab-as-code/blob/main/docs/security-baseline.md) · [Vault ADR](https://github.com/R-Garren/homelab-as-code/blob/main/docs/adr/0002-secrets-with-ansible-vault.md) · [Portainer API build log](https://github.com/R-Garren/homelab-as-code/blob/main/docs/build-log/week-08.md) · [Setup-token ADR](https://github.com/R-Garren/homelab-as-code/blob/main/docs/adr/0006-portainer-admin-setup-token.md) |
 | **Containers** | Docker Engine, Compose, Portainer, GitOps deploys from Git | [Docker bypasses UFW](https://github.com/R-Garren/homelab-as-code/blob/main/docs/security-baseline.md#docker-bypasses-ufw) · [Portainer ADR](https://github.com/R-Garren/homelab-as-code/blob/main/docs/adr/0003-ansible-owns-host-portainer-owns-apps.md) |
 | **Security monitoring** | Wazuh SIEM, custom DNS-tunneling and DGA rules (MITRE T1071.004, T1568.002) | Home lab v1 *(paused during rebuild)* |
 | **Systems** | Linux (Ubuntu Server), Windows Server administration | Lab + coursework |
